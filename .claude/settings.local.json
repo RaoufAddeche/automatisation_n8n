@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker start:*)",
+      "Bash(docker stop:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker-compose:*)",
+      "Bash(docker compose:*)",
+      "Bash(curl:*)",
+      "Bash(rm:*)",
+      "Bash(cat:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(.sqlapply_phase2_migrations.ps1)",
+      "Bash(Get-Content .sqlphase2_schema.sql)",
+      "Bash(python:*)",
+      "Bash(npm install:*)",
+      "Bash(start http://localhost:5678)",
+      "Bash(Get-Content sql/phase1_schema.sql)",
+      "Bash(python3:*)",
+      "Bash(start http://localhost:3000)",
+      "Bash(start http://localhost:8000/docs)",
+      "Bash(for:*)",
+      "Bash(grep:*)",
+      "Bash(done)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

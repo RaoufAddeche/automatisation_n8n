@@ -1,0 +1,91 @@
+# docker-compose.yml
+services:
+  db:
+    image: postgres:15
+    container_name: postgresql
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    networks:
+      - n8n_network
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./volumes/n8n_data:/root/.n8n
+    networks:
+      - n8n_network
+    depends_on:
+      - db
+      
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_GPU_LAYERS=20
+      - OLLAMA_NUM_PARALLEL=4
+    volumes:
+      - ./volumes/ollama_data:/root/.ollama
+    networks:
+      - n8n_network
+
+  sidecar:
+    build: ./sidecar-mcp
+    container_name: sidecar-mcp
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    networks:
+      - n8n_network
+    depends_on:
+      - db
+
+  dashboard-backend:
+    build: ./dashboard/backend
+    container_name: dashboard-backend
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - n8n_network
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=admin_user_db
+      - DB_PASSWORD=O2ZkUw6Qjh5HCJT97mNWFgtzDaPv1LeA
+      - DB_NAME=n8n_database
+
+  dashboard-frontend:
+    build: ./dashboard/frontend
+    container_name: dashboard-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    networks:
+      - n8n_network
+    depends_on:
+      - dashboard-backend
+
+networks:
+  n8n_network:
