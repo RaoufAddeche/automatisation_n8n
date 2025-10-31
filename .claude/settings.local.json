@@ -27,7 +27,9 @@
       "Bash(grep:*)",
       "Bash(done)",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Portfolio automatisé avec n8n et dual-mode CDI/Freelance\n\n- Portfolio React avec toggle CDI/Freelance\n- Backend FastAPI (36 endpoints REST)\n- 4 workflows n8n automatisés :\n  * GitHub Sync (6h) : Import auto projets + descriptions IA\n  * Visitor Notifications (15min) : Alertes visiteurs temps réel\n  * Analytics Digest (9h) : Rapport quotidien de performance\n  * Content Review (12h) : Alertes contenu en attente\n- Base PostgreSQL avec 8 tables (projects, analytics, blog, etc.)\n- OpenAI GPT-4o-mini pour génération de descriptions\n- Docker Compose pour déploiement multi-services\n- Documentation complète (README, FEATURES, PRESENTATION)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
