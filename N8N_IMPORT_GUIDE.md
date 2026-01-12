@@ -81,7 +81,7 @@ SSL: Disabled
 
 Ta clé est déjà dans `.env` :
 ```
-GPT_API_KEY=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
+GPT_API_KEY=sk-proj-YOUR_OPENAI_API_KEY_HERE
 ```
 
 ### Restart n8n pour charger la variable

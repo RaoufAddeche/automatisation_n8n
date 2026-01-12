@@ -48,7 +48,7 @@ docker exec postgresql psql -U admin_user_db -d n8n_database -c "SELECT title, c
 ## 🔧 Configuration (Déjà Faite)
 
 ### ✅ Token GitHub
-Déjà hardcodé dans le workflow : `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`
+Déjà hardcodé dans le workflow : `ghp_YOUR_GITHUB_TOKEN_HERE` (à remplacer par ton vrai token)
 
 ### ✅ Clé OpenAI
 Déjà dans `.env` : `GPT_API_KEY`
